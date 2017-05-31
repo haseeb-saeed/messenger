@@ -17,7 +17,8 @@ const MESSAGE = 'message';
 const START_TYPING = 'start_typing';
 const STOP_TYPING = 'stop_typing';
 
-//app.use('/public', express.static(__dirname + '/public'));
+// Require routes
+require('./app/routes/users')(app);
 
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/index.html');

@@ -1,5 +1,6 @@
 'use strict';
 
+const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -11,7 +12,7 @@ const UserSchema = new Schema({
 	username: {
 		type: String,
 		trim: true,
-		unqiue: true,
+		unique: true,
 		required: true,
 	},
 	password: {
@@ -19,6 +20,18 @@ const UserSchema = new Schema({
 		required: true,
 	},
 });
+
+UserSchema.pre('save', function(next) {
+	if (this.password) {
+		this.password = bcrypt.hashSync(this.password, 10);
+	}
+
+	next();
+});
+
+UserSchema.methods.comparePassword = function(password) {
+	return bcrypt.compareSync(password, this.password);
+};
 
 UserSchema.methods.toJSON = function() {
 	const user = this.toObject();

@@ -22,14 +22,12 @@ exports.authenticate = function(req, res, next) {
 		username: req.body.username,
 	}, function(err, user) {
 		if (err) {
-			next(err);
+			return next(err);
 		} else if (!user) {
 			return res.json({error: 'User does not exist'});
 		} else if (!user.comparePassword(req.body.password)) {
 			return res.json({error: 'Incorrect password'});
 		}
-
-		console.log(user.toJSON());
 
 		const token = jwt.sign(user.toJSON(), config.jwtSecret, {
 			expiresIn: EXPIRY_TIME,
@@ -38,3 +36,7 @@ exports.authenticate = function(req, res, next) {
 		return res.json({token: token});
 	});
 };
+
+exports.decode = function(req, res) {
+	return res.json({decoded: req.decoded});
+}

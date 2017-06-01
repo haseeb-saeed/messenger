@@ -12,9 +12,6 @@ module.exports = function() {
 	}));
 
 	app.use(bodyParser.json());
-
-	// TODO: Require routes here
-
 	app.use('/public', express.static('./public'));
 
 	return app;

@@ -1,6 +1,7 @@
 'use strict';
 
 const users = require('../controllers/users');
+const verifyToken = require('../middleware/verifyToken');
 
 module.exports = function(app) {
 	app.route('/users/register')
@@ -8,4 +9,7 @@ module.exports = function(app) {
 
 	app.route('/users/authenticate')
 		.post(users.authenticate);
+
+	app.route('/users/decode')
+		.post(verifyToken, users.decode);
 };

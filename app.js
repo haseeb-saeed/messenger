@@ -17,8 +17,8 @@ const MESSAGE = 'message';
 const START_TYPING = 'start_typing';
 const STOP_TYPING = 'stop_typing';
 
-// Require routes
-require('./app/routes/users')(app);
+// Require routes here
+app.use('/users', require('./app/routes/users'));
 
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/index.html');

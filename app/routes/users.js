@@ -1,15 +1,11 @@
 'use strict';
 
+const router = require('express').Router();
 const users = require('../controllers/users');
 const verifyToken = require('../middleware/verifyToken');
 
-module.exports = function(app) {
-	app.route('/users/register')
-		.post(users.register);
+router.post('/register', users.register);
+router.post('/authenticate', users.authenticate);
+router.post('/decode', verifyToken, users.decode);
 
-	app.route('/users/authenticate')
-		.post(users.authenticate);
-
-	app.route('/users/decode')
-		.post(verifyToken, users.decode);
-};
+module.exports = router;

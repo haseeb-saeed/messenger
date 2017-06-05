@@ -33,7 +33,7 @@ exports.authenticate = function(req, res, next) {
 			expiresIn: EXPIRY_TIME,
 		});
 
-		return res.json({token: token});
+		return res.json({token: token, user: user});
 	});
 };
 

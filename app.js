@@ -21,7 +21,7 @@ const STOP_TYPING = 'stop_typing';
 app.use('/users', require('./app/routes/users'));
 
 app.get('/', function(req, res) {
-	res.sendFile(__dirname + '/index.html');
+	res.sendFile(__dirname + '/public/index.html');
 });
 
 io.on(CONNECTION, function(socket) {

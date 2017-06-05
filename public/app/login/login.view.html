@@ -1,6 +1,10 @@
 <div>
-	<h2>{{ loginCtrl.name }}</h2>
+	<h2>{{ loginCtrl.user }}</h2>
 	<h2>Login</h2>
-	<input type="text" placeholder="Username" ng-model="user.username">
-	<input type="password" placeholder="Password" ng-model="user.password">
+	<br/>
+	<form>
+		<input type="text" placeholder="Username" ng-model="loginCtrl.user.username">
+		<input type="password" placeholder="Password" ng-model="loginCtrl.user.password">
+		<button type="submit" ng-click="loginCtrl.login(loginCtrl.user)">Login</button>
+	</form>
 </div>

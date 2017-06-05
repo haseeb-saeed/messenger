@@ -24,9 +24,9 @@ exports.authenticate = function(req, res, next) {
 		if (err) {
 			return next(err);
 		} else if (!user) {
-			return res.json({error: 'User does not exist'});
+			return res.status(422).json({error: 'User does not exist'});
 		} else if (!user.comparePassword(req.body.password)) {
-			return res.json({error: 'Incorrect password'});
+			return res.status(422).json({error: 'Incorrect password'});
 		}
 
 		const token = jwt.sign(user.toJSON(), config.jwtSecret, {

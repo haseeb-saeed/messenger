@@ -5,10 +5,14 @@
 		.module('messengerApp')
 		.controller('LoginController', LoginController);
 
-	LoginController.$inject = [];
+	LoginController.$inject = ['AuthService'];
 
-	function LoginController() {
+	function LoginController(AuthService) {
 		let vm = this;
-		vm.name = 'Paul McCartney';
+		vm.login = login;
+
+		function login(user) {
+			AuthService.login(user);
+		}
 	}
 })();

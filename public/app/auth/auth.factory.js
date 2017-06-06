@@ -16,36 +16,35 @@
 		return service;
 
 		function login(user) {
-			console.log('Heh login');
 			return $http
 				.post('/users/authenticate', user)
-				.success(loginSuccess)
-				.error(loginError);
+				.then(loginSuccess, loginError);
 		}
 
-		function loginSuccess(data) {
+		function loginSuccess(response) {
 			console.log('Login success');
-			console.log(data);
+			console.log(response);
 		}
 
-		function loginError() {
+		function loginError(response) {
 			console.log('Login error');
+			console.log(response);
 		}
 
 		function register(user) {
 			return $http
 				.post('/users/register', user)
-				.success(registerSuccess)
-				.error(registerError);
+				.then(registerSuccess, registerError);
 		}
 
-		function registerSuccess(data) {
+		function registerSuccess(response) {
 			console.log('Register success');
-			console.log(data);
+			console.log(response);
 		}
 
-		function registerError() {
+		function registerError(response) {
 			console.log('Register error');
+			console.log(response);
 		}
 	}
 })();

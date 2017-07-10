@@ -1,5 +1,4 @@
 <div>
-	<h2>{{ loginCtrl.user }}</h2>
 	<h2>Login</h2>
 	<br/>
 	<form>
@@ -7,4 +6,6 @@
 		<input type="password" placeholder="Password" ng-model="loginCtrl.user.password">
 		<button type="submit" ng-click="loginCtrl.login(loginCtrl.user)">Login</button>
 	</form>
+	<br/>
+	<p>Don't have an account? <a ng-href="/#!/register">Register</a></p>
 </div>

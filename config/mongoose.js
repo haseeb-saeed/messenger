@@ -9,6 +9,8 @@ module.exports = function() {
 
 	// TODO: Require models here
 	require('../app/models/user');
+	require('../app/models/chat');
+	require('../app/models/message');
 
 	return db;
 };

@@ -5,14 +5,22 @@
 		.module('messengerApp')
 		.controller('LoginController', LoginController);
 
-	LoginController.$inject = ['AuthService'];
+	LoginController.$inject = ['$location', 'AuthService'];
 
-	function LoginController(AuthService) {
+	function LoginController($location, AuthService) {
 		let vm = this;
 		vm.login = login;
 
 		function login(user) {
-			AuthService.login(user);
+			AuthService.login(user, loginSuccess, loginError);
+		}
+
+		function loginSuccess(response) {
+			$location.path('/');
+		}
+
+		function loginError(response) {
+			// TODO: Handle logging in errors
 		}
 	}
 })();

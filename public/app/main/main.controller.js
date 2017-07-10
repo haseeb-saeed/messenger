@@ -5,10 +5,17 @@
 		.module('messengerApp')
 		.controller('MainController', MainController);
 
-	MainController.$inject = [];
+	MainController.$inject = ['$location', 'AuthService', 'ChatService'];
 
-	function MainController() {
+	function MainController($location, AuthService, ChatService) {
 		let vm = this;
-		vm.name = 'Haseeb Saeed';
+		vm.name = AuthService.getCurrentUser().name;
+		vm.chats = ChatService.query();
+		vm.logout = logout;
+
+		function logout() {
+			AuthService.logout();
+			$location.path('/login');
+		}
 	}
 })();

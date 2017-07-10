@@ -38,7 +38,6 @@ UserSchema.methods.toJSON = function() {
 
 	// Only username and name should be known
 	delete user.password;
-
 	return user;
 };
 

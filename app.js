@@ -19,6 +19,7 @@ const STOP_TYPING = 'stop_typing';
 
 // Require routes here
 app.use('/users', require('./app/routes/users'));
+app.use('/chats', require('./app/routes/chats'));
 
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/public/index.html');

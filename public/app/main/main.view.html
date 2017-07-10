@@ -1,3 +1,13 @@
 <div>
-	<h2>{{ mainCtrl.name }}</h2>
+	<div>
+		<h2>Welcome {{ mainCtrl.name }}!</h2>
+		<button type="submit" ng-click="mainCtrl.logout()">Logout</button>
+	</div>
+	<div ng-repeat="chat in mainCtrl.chats">
+		<p>{{ chat.name || "Herp derp" }}</p>
+		<li ng-repeat="user in chat.participants">
+			<ul>{{ user.name }}</ul>
+		</li>
+		</div>
+	</div>
 </div>

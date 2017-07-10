@@ -7,30 +7,14 @@
 	<body>
 		<div ng-app="messengerApp">
 			<div ui-view></div>
-			<div>
-				<p id="connect">A user  connected</p>
-			</div>
-			<div>
-				<p id="disconnect">A user disconnected</p>
-			</div>
-			<div>
-				<p id="typing">Is writing a message...</p>
-			</div>
-			<div>
-				<ul id="messages"></ul>
-			</div>
-			<div>
-				<form action="">
-					<input id="m" autocomplete="off" />
-					<button>Send</button>
-				</form>
-			</div>
 		</div>
 	</body>
 
 	<!-- AngularJS library files -->
 	<script src="/public/lib/angular/angular.min.js"></script>
 	<script src="/public/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="/public/lib/angular-resource/angular-resource.min.js"></script>
+	<script src="/public/lib/ngstorage/ngStorage.min.js"></script>
 
 	<!-- AngularJS modules -->
 	<script src="/public/app/app.module.js"></script>
@@ -42,10 +26,10 @@
 
 	<!-- AngularJS services -->
 	<script src="/public/app/auth/auth.factory.js"></script>
+	<script src="/public/app/auth/auth-interceptor.factory.js"></script>
+	<script src="/public/app/chat/chat.factory.js"></script>
 
 	<!-- Other JS files -->
 	<!-- script src="/socket.io/socket.io.js"></script -->
-	<!-- script src="https://code.jquery.com/jquery-1.11.1.js"></script -->
-
 	<!-- script src="/public/socket.io/main.js"></script -->
 </html>

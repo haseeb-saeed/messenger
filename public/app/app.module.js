@@ -2,7 +2,7 @@
 
 (function() {
 	const app = angular
-		.module('messengerApp', ['ui.router', 'ngResource', 'ngStorage'])
+		.module('messengerApp', ['ui.router', 'ngResource', 'ngStorage', 'ui.bootstrap'])
 		.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', config])
 		.run(['$transitions', '$location', 'AuthService', run]);
 

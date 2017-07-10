@@ -7,6 +7,10 @@ const User = require('mongoose').model('User');
 const EXPIRY_TIME = 9999999;
 
 exports.register = function(req, res, next) {
+	if (req.body.password !== req.body.confirmedPassword) {
+		return res.status(422).json({error: 'Passwords do not match'});
+	} 
+
 	const newUser = new User(req.body);
 	newUser.save(function(err, user) {
 		console.log(err);

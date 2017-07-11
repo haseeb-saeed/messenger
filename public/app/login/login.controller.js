@@ -27,7 +27,6 @@
 			} else {
 				vm.error = 'An unknown error occured';
 			}
-			// TODO: Handle logging in errors
 		}
 	}
 })();

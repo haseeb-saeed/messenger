@@ -8,7 +8,7 @@ const EXPIRY_TIME = 9999999;
 
 exports.register = function(req, res, next) {
 	if (req.body.password !== req.body.confirmedPassword) {
-		return res.status(422).json({error: 'Passwords do not match'});
+		return res.status(422).json({error: 'The provided passwords do not match'});
 	} 
 
 	const newUser = new User(req.body);
@@ -16,7 +16,7 @@ exports.register = function(req, res, next) {
 		console.log(err);
 		if (err) {
 			if (err.code = 11000) {
-				return res.status(422).json({error: 'User already exists'});
+				return res.status(422).json({error: 'A user with the provided username already exists'});
 			}
 
 			return next(err);
@@ -33,9 +33,9 @@ exports.authenticate = function(req, res, next) {
 		if (err) {
 			return next(err);
 		} else if (!user) {
-			return res.status(422).json({error: 'User does not exist'});
+			return res.status(422).json({error: 'The username or password provided is incorrect'});
 		} else if (!user.comparePassword(req.body.password)) {
-			return res.status(422).json({error: 'Incorrect password'});
+			return res.status(422).json({error: 'The username or password provided is incorrect'});
 		}
 
 		return res.json({token: createToken(user), user: user});

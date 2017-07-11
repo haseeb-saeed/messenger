@@ -26,6 +26,11 @@
 					Don't have an account? <a ng-href="/#!/register">Register</a>
 				</p>
 			</div>
+			<div class="alert alert-danger" role="alert" ng-if="loginCtrl.error">
+				<p class="text-center">
+					{{ loginCtrl.error }}
+				</p>
+			</div>
 		</div>
 	</div>
 </div>

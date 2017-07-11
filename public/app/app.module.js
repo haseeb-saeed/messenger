@@ -4,7 +4,7 @@
 	const app = angular
 		.module('messengerApp', ['ui.router', 'ngResource', 'ngStorage', 'ui.bootstrap'])
 		.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', config])
-		.run(['$transitions', '$location', 'AuthService', run]);
+		.run(['$transitions', '$location', 'AuthService', 'SocketService', run]);
 
 	function config($stateProvider, $urlRouterProvider, $httpProvider) {
 		$urlRouterProvider.otherwise('/');
@@ -32,7 +32,8 @@
 		$httpProvider.interceptors.push('AuthInterceptor');
 	}
 
-	function run($transitions, $location, AuthService) {
+	function run($transitions, $location, AuthService, SocketService) {
+		SocketService.connect();
 		$transitions.onBefore({}, onBeforeTransition);
 
 		function onBeforeTransition(trans) {
